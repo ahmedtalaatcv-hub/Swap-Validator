@@ -409,18 +409,7 @@ document.addEventListener("click", () => {
 }, { once: true });
 
 let currentStep = 1;
-// SPLASH FADE OUT
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    const splash = document.getElementById("splash");
-    splash.style.opacity = "0";
-    splash.style.transition = "0.5s";
 
-    setTimeout(()=>{
-      splash.style.display = "none";
-    }, 500);
-  }, 3000);
-});
 
 function showStep(step){
   document.querySelectorAll(".step").forEach(s=>s.style.display="none");
