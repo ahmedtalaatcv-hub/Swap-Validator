@@ -375,7 +375,7 @@ function showStep(step){
   nextBtn.style.display = (step === 3) ? "none" : "flex";
 
   // إخفاء Back في أول صفحة
-  backBtn.style.display = (step === 1) ? "none" : "flex";
+backBtn.style.display = (step === 1 || step === 3) ? "none" : "flex";
 }
 
 function nextStep(){
