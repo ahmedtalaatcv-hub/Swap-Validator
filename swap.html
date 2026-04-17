@@ -353,6 +353,15 @@ button[onclick="resetForm()"] {
 </div>
 
 <script>
+// 🔊 Sounds
+const successSound = new Audio("success.mp3");
+const errorSound = new Audio("error.mp3");
+// 🔓 فك قفل الصوت (مهم جدًا للموبايل)
+document.addEventListener("click", () => {
+  successSound.play().then(()=>successSound.pause()).catch(()=>{});
+  errorSound.play().then(()=>errorSound.pause()).catch(()=>{});
+}, { once: true });
+
 let currentStep = 1;
 
 function showStep(step){
@@ -363,11 +372,13 @@ function showStep(step){
 function nextStep(){
   if(currentStep < 3){
     currentStep++;
-    showStep(currentStep);
 
+    // 👇 لو آخر خطوة → شغل validate قبل ما تغير الصفحة
     if(currentStep === 3){
-      validate();
+      validate(); // هنا الصوت هيشتغل صح
     }
+
+    showStep(currentStep);
   }
 }
 
@@ -519,6 +530,14 @@ function validate(){
   let a2=analyze(2,name2);
 
   let allOk = a1.ok && a2.ok;
+  // 🔊 تشغيل الصوت
+if(allOk){
+  successSound.currentTime = 0;
+  successSound.play().catch(()=>{});
+}else{
+  errorSound.currentTime = 0;
+  errorSound.play().catch(()=>{});
+}
 // 🎯 APPLY UI FEEDBACK
 
 // reset الألوان
