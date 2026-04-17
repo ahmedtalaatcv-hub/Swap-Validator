@@ -268,9 +268,8 @@ button[onclick="resetForm()"] {
 
 /* اللوجو */
 #splash img {
-  width:120px;
-  margin-bottom:20px;
-  animation: zoomIn 1s ease;
+  width:200px;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
 }
 
 /* لودينج */
@@ -693,6 +692,7 @@ window.addEventListener("load", () => {
     document.getElementById("splash").style.display = "none";
   }, 3000);
 });
+showStep(1);
 </script>
 
 </body>
