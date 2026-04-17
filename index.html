@@ -367,6 +367,15 @@ let currentStep = 1;
 function showStep(step){
   document.querySelectorAll(".step").forEach(s=>s.style.display="none");
   document.getElementById("step"+step).style.display="block";
+
+  const nextBtn = document.querySelector(".btn.next");
+  const backBtn = document.querySelector(".btn.back");
+
+  // إخفاء Next في آخر صفحة
+  nextBtn.style.display = (step === 3) ? "none" : "flex";
+
+  // إخفاء Back في أول صفحة
+  backBtn.style.display = (step === 1) ? "none" : "flex";
 }
 
 function nextStep(){
